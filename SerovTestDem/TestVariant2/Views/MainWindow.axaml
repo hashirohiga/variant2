@@ -1,0 +1,154 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:TestVariant2.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" Width="750" Height="600"
+        x:Class="TestVariant2.Views.MainWindow"
+        Icon="C:\Users\Ghoul SSS\Desktop\SerovTestDem\TestVariant2\Assets\lopushok.ico"
+        Title="Lopushok"
+		WindowStartupLocation="CenterScreen"
+		WindowState="Minimized">
+
+	<Design.DataContext>
+		<vm:MainWindowViewModel/>
+	</Design.DataContext>
+	<Grid>
+		<!--<Image Source="C:\Users\Ghoul SSS\Desktop\SerovTestDem\TestVariant2\Image\product_list_layout.jpg"/>-->
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition
+					Height="0.18*"/>
+				<RowDefinition
+					Height="*"/>
+				<RowDefinition
+					Height="0.07*"/>
+			</Grid.RowDefinitions>
+			<StackPanel
+				Orientation="Horizontal"
+				HorizontalAlignment="Left"
+				VerticalAlignment="Top">
+				<TextBox
+					Margin="22,20"
+					Width="355"
+					Height="43"
+					Watermark="Введите для поиска"
+					FontSize="14"
+					VerticalContentAlignment="Center"
+					Background="#CEFFF9"/>
+				<ComboBox
+					Margin="-8,20"
+					Width="176"
+					Height="43"
+					PlaceholderText="Сортировка"
+					Background="#CEFFF9"/>
+				<ComboBox
+					Margin="21"
+					Width="148"
+					Height="43"
+					PlaceholderText="Фильтрация"
+					Background="#CEFFF9"/>
+			</StackPanel>
+
+			<ListBox
+				Grid.Row="1"
+				Background="Transparent"
+				Items="{Binding ProductMaterialList}">
+				<ListBox.Styles>
+					<Style
+						Selector="ListBoxItem">
+						<Setter Property="Template">
+							<Setter.Value>
+								<ControlTemplate
+									TargetType="ListBoxItem">
+									<Border
+										Width="705"
+										Height="110"
+										BorderBrush="Black"
+										Margin="0,0,0,14"
+										BorderThickness="1">
+										<Grid>
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition
+													Width="0.214*"/>
+												<ColumnDefinition
+													Width="*"/>
+												<ColumnDefinition
+													Width="0.2*"/>
+											</Grid.ColumnDefinitions>
+											<Image Source="C:\Users\Ghoul SSS\Desktop\SerovTestDem\TestVariant2\products\picture.png"
+												   Width="76"/>
+
+											<Grid
+												Grid.Column="1">
+												<Grid.RowDefinitions>
+													<RowDefinition
+														Height="0.8*"/>
+													<RowDefinition
+														Height="0.5*"/>
+													<RowDefinition
+														Height="*"/>
+												</Grid.RowDefinitions>
+												<StackPanel
+													Orientation="Horizontal"
+													HorizontalAlignment="Left"
+													VerticalAlignment="Top">
+													<TextBlock
+														Text="{Binding Product.ProductType.Title}"
+														FontSize="18"
+														Margin="15,18,0,0"/>
+													<TextBlock
+														Text=" |"
+														FontSize="18"
+														Margin="0,18,0,0"/>
+													<TextBlock
+														Text="Наименование продукта"
+														FontSize="18"
+														Margin="5,18,0,0"/>
+												</StackPanel>
+												<TextBlock
+													Text="{Binding Product.ArticleNumber}"
+													Grid.Row="1"
+													Margin="15,1,0,0"/>
+												<StackPanel
+													Grid.Row="2"
+													Orientation="Horizontal">
+													<TextBlock
+														Text="Материалы:"
+														Margin="15,0,0,0"/>
+													<TextBlock
+														Text="{Binding Material.Title}"
+														Width="400"
+														TextWrapping="WrapWithOverflow"/>
+												</StackPanel>
+												
+											</Grid>
+										<TextBlock
+											Text="Стоимость"
+											Grid.Column="2"
+											Margin="2,23"/>
+										</Grid>
+										<Border.Styles>
+											<Style
+												Selector="Border">
+												<Setter Property="Background"
+														Value="#CEFFF9"/>
+											</Style>
+											<Style
+												Selector="Border:pointerover">
+												<Setter Property="Background"
+														Value="#00CC76"/>
+											</Style>
+										</Border.Styles>
+									</Border>
+								</ControlTemplate>
+							</Setter.Value>
+						</Setter>
+					</Style>
+				</ListBox.Styles>
+			</ListBox>
+		</Grid>
+	</Grid>
+
+
+</Window>
